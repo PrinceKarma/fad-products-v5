@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <ShopContextProvider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Navbar />
           <Routes>
             <Route path='/' element={<Shop/>}/>
