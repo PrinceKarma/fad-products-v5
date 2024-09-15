@@ -13,6 +13,7 @@ const getDefaultCart = () => {
 
 export const ShopContextProvider = (props) => {
   const [cartProducts, setCartProducts] = useState(getDefaultCart());
+  const [wishList, setWishList] = useState([]);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -24,6 +25,25 @@ export const ShopContextProvider = (props) => {
     }
     return totalAmount;
   };
+
+
+  const addToWishList = (ProductId) => {
+    setWishList((prevWishList) => {
+      if (!prevWishList.includes(ProductId)) {
+        return [...prevWishList, ProductId];
+      }
+      return prevWishList; // If the product is already in the wishlist, return the same list.
+    });
+  };
+
+  const removeFromWishList = (ProductId) => {
+    setWishList((prevWishList) =>
+      prevWishList.filter(id => id !== ProductId) // Remove the product by filtering it out
+    );
+  };
+
+  const isProductInWishList = (ProductId) => wishList.includes(ProductId);
+
 
   const addToCart = (ProductId) => {
     setCartProducts((prev) => ({ ...prev, [ProductId]: prev[ProductId] + 1 }));
@@ -42,6 +62,10 @@ export const ShopContextProvider = (props) => {
   };
 
   const contextValue = {
+    addToWishList,
+    removeFromWishList,
+    isProductInWishList,
+    wishList,
     cartProducts,
     addToCart,
     updateCartProductCount,
