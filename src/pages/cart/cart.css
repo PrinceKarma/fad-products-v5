@@ -31,6 +31,12 @@
     font-weight: bolder;
   }
   
+  .countHandler.invalid input,
+  .countHandler input.invalid {
+    border: 2px solid red;
+    background-color: #ffeeee;
+  }
+  
   .checkout button {
     width: 150px;
     height: 50px;

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { PRODUCTS } from "../products";
 
 export const ShopContext = createContext(null);
@@ -23,9 +23,8 @@ export const ShopContextProvider = (props) => {
         totalAmount += cartProducts[Product] * ProductInfo.price;
       }
     }
-    return totalAmount;
+    return totalAmount.toFixed(2);
   };
-
 
   const addToWishList = (ProductId) => {
     setWishList((prevWishList) => {
@@ -44,17 +43,22 @@ export const ShopContextProvider = (props) => {
 
   const isProductInWishList = (ProductId) => wishList.includes(ProductId);
 
-
   const addToCart = (ProductId) => {
-    setCartProducts((prev) => ({ ...prev, [ProductId]: prev[ProductId] + 1 }));
+    setCartProducts((prev) => ({ ...prev, [ProductId]: (prev[ProductId] || 0) + 1 }));
   };
 
   const removeFromCart = (ProductId) => {
-    setCartProducts((prev) => ({ ...prev, [ProductId]: prev[ProductId] - 1 }));
+    setCartProducts((prev) => ({
+      ...prev,
+      [ProductId]: Math.max(0, prev[ProductId] - 1)
+    }));
   };
 
   const updateCartProductCount = (newAmount, ProductId) => {
-    setCartProducts((prev) => ({ ...prev, [ProductId]: newAmount }));
+    setCartProducts((prev) => ({
+      ...prev,
+      [ProductId]: Math.max(0, newAmount)
+    }));
   };
 
   const checkout = () => {
