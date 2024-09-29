@@ -1,49 +1,102 @@
 .cart {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .cartProduct {
-    width: 700px;
-    height: 250px;
-    display: flex;
-  
-    align-items: center;
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 25px;
-    margin: 30px;
-  }
-  
-  .cartProduct img {
-    width: 200px;
-  }
-  
-  .cartProduct .description {
-    width: 100%;
-    font-size: 30px;
-  }
-  
-  .countHandler input {
-    width: 40px;
-    text-align: center;
-    font-weight: bolder;
-  }
-  
-  .countHandler.invalid input,
-  .countHandler input.invalid {
-    border: 2px solid red;
-    background-color: #ffeeee;
-  }
-  
-  .checkout button {
-    width: 150px;
-    height: 50px;
-    background-color: rgb(19, 19, 19);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    margin: 10px;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartProduct {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  margin: 30px;
+  padding: 20px;
+}
+
+.cartProduct img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.cartProduct .description {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.countHandlerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.countHandler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.countHandler input {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  font-weight: bolder;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.countHandler input.invalid {
+  border: 2px solid red;
+  background-color: #ffeeee;
+}
+
+.countHandler button {
+  width: 30px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countHandler button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error-message-container {
+  height: 20px;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.checkout button {
+  width: 150px;
+  height: 50px;
+  background-color: rgb(19, 19, 19);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+  cursor: pointer;
+}
