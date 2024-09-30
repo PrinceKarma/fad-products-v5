@@ -9,10 +9,9 @@ export const WishListItem = (props) => {
     const { cartProducts, addToCart, removeFromCart, updateCartProductCount, removeFromWishList } =
         useContext(ShopContext);
     const navigate = useNavigate();
-    const [inCart, setInCart] = useState(false);
+    const inCart = cartProducts[id] && cartProducts[id] > 0;
     const handleAddToCart = (id) => {
         addToCart(id);
-        setInCart(true);
     }
 
     return (
@@ -33,12 +32,12 @@ export const WishListItem = (props) => {
 
 
             </div >
-            <div class="wishlistActions">
+            <div className="wishlistActions">
 
-                <div class="alert-container" style={{
+                <div className="alert-container" style={{
                     visibility: inCart ? "visible" : "hidden"
                 }}>
-                    <CheckSquare class="alert-icon" color="#1fd348" weight="duotone" />
+                    <CheckSquare className="alert-icon" color="#1fd348" weight="duotone" />
                     Added to Cart
                 </div>
                 <button className="addToCart" onClick={() => { !inCart ? handleAddToCart(id) : navigate("/cart"); }}>
