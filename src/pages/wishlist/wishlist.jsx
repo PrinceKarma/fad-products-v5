@@ -25,24 +25,6 @@ export const WishList = () => {
                 </div>) : (
                 <h1>Your WishList is Empty</h1>
             )}
-
-            {/* {totalAmount > 0 ? (
-                <div className="checkout">
-                    <p> Subtotal: ${totalAmount} </p>
-                    <button onClick={() => navigate("/")}> Continue Shopping </button>
-                    <button
-                        onClick={() => {
-                            checkout();
-                            navigate("/checkout");
-                        }}
-                    >
-                        {" "}
-                        Checkout{" "}
-                    </button>
-                </div>
-            ) : (
-                <h1> Your Shopping Cart is Empty</h1>
-            )} */}
         </div>
     );
 };
