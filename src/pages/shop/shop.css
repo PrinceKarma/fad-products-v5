@@ -89,9 +89,16 @@
 .searchBar {
   margin-bottom: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* aligns the search bar to the right */
 }
 
+.searchBar input {
+  max-width: 300px; /* controls the width of the input box */
+  width: 100%; /* ensures the input takes up the max width but no more */
+  padding: 8px; /* optional: adds padding for better appearance */
+  border: 1px solid #121111; /* optional: gives the input a border */
+  border-radius: 4px; /* optional: rounds the corners of the input */
+}
 .products {
   display: flex;
   flex-wrap: wrap;

@@ -36,9 +36,15 @@ export const Shop = () => {
 
       {/* Products List */}
       <div className="products">
-        {filteredProducts.map((product) => (
-          <Product key={product.id} data={product} />
-        ))}
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <Product key={product.id} data={product} />
+          ))
+        ) : (
+          <div className="noResults">
+            <p>No products found. Please try searching again.</p>
+          </div>
+        )}
       </div>
     </div>
   );
