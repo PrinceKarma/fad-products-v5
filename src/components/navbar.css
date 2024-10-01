@@ -34,3 +34,18 @@
 .navbar-element-subtext {
   font-size: 18px;
 }
+
+.cart-badge {
+  position: absolute;
+  right: 75px;
+  top: 10px;
+  font-size: 12px;
+  background-color: hsl(44, 100%, 56%);
+  color: black;
+  border-radius: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+
+  font-weight: bold;
+
+}
