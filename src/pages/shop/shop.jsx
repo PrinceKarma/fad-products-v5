@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PRODUCTS } from "../../products"; // Assuming your products are imported from here
-import { Product } from "./product"; // Assuming Product is the component for each product
+import { Product } from "./product-card"; // Assuming Product is the component for each product
 import "./shop.css";
 
 export const Shop = () => {

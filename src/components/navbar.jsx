@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart } from 'phosphor-react';
-import { Heart } from 'phosphor-react';
+import { Storefront, ShoppingCart, Heart } from 'phosphor-react';
 import { ShopContext } from "../context/shop-context";
 
 
@@ -15,7 +14,11 @@ export const Navbar = () => {
         <div className="navbar">
             <div className="links">
 
-                <Link to="/"> <div className="navbar-element">Shop </div></Link>
+                <Link to="/"> 
+                    <div className="navbar-element">
+                        <Storefront size={30} />
+                        <div className="navbar-element-subtext">Shop</div>
+                    </div></Link>
                 <Link to="/wishlist">
                     <div className="navbar-element">
                         <Heart size={30} />

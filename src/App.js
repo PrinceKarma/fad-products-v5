@@ -4,8 +4,9 @@ import { Navbar } from './components/navbar';
 import { Shop } from './pages/shop/shop';
 import { Cart } from './pages/cart/cart';
 import { WishList } from './pages/wishlist/wishlist';
+import { ProductPage } from "./pages/product-details/product-page";
 import { ShopContextProvider } from './context/shop-context';
-import ProductList from './product_list';
+
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/' element={<Shop />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='wishlist' element={<WishList />} />
+            <Route path="/product/:id" element={<ProductPage />} />
           </Routes>
         </Router>
       </ShopContextProvider>
