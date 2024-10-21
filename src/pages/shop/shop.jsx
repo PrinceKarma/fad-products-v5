@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { PRODUCTS } from "../../products"; // Assuming your products are imported from here
-import { Product } from "./product-card"; // Assuming Product is the component for each product
+import { PRODUCTS } from "../../products";
+import { Product } from "./product-card";
 import "./shop.css";
 
 export const Shop = () => {
@@ -12,7 +12,6 @@ export const Shop = () => {
     setSearchTerm(event.target.value);
   };
 
-  // Filter products based on the search term
   const filteredProducts = PRODUCTS.filter((product) =>
     product.productName.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -30,7 +29,6 @@ export const Shop = () => {
           placeholder="Search for products..."
           value={searchTerm}
           onChange={handleSearch}
-          style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
         />
       </div>
 
@@ -42,7 +40,7 @@ export const Shop = () => {
           ))
         ) : (
           <div className="noResults">
-            <p>No products found. Please try searching again.</p>
+            <p>No products found. Please try a different search term.</p>
           </div>
         )}
       </div>

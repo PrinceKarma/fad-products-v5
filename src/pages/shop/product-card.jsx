@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/shop-context";
-import { Heart } from 'phosphor-react';
+import { Heart, ShoppingCart } from 'phosphor-react';
 
 export const Product = (props) => {
   const { id, productName, price, productImage } = props.data;
@@ -15,22 +15,26 @@ export const Product = (props) => {
       <Link to={`/product/${id}`}>
         <img src={productImage} alt={productName} />
         <div className="description">
-          <p><b>{productName}</b></p>
-          <p>${price}</p>
+          <p>{productName}</p>
+          <p>${price.toFixed(2)}</p>
         </div>
       </Link>
-      <span className="productActions">
+      <div className="productActions">
         <button className="addToCartBttn" onClick={() => addToCart(id)}>
+          <ShoppingCart size={20} style={{marginRight: '0.5rem'}} />
           Add To Cart {cartProductCount > 0 && <> ({cartProductCount})</>}
         </button>
         <button 
           className="addToWishListBttn" 
-          onClick={() => isInWishlist ? removeFromWishList(id) : addToWishList(id)} 
-          style={{ color: isInWishlist ? 'red' : 'black' }}
+          onClick={() => isInWishlist ? removeFromWishList(id) : addToWishList(id)}
         >
-          <Heart weight="fill" />
+          <Heart 
+            size={20} 
+            weight={isInWishlist ? "fill" : "regular"} 
+            color={isInWishlist ? 'red' : '#4299E1'}
+          />
         </button>
-      </span>
+      </div>
     </div>
   );
 };

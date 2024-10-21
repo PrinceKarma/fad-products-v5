@@ -155,9 +155,9 @@ export const PRODUCTS = [
       productName: "Virtual Reality Headset",
       price: 834.99,
       productImage: images["vr_headset.png"],
-      description: "High-waisted, textured leggings popularized on social media for their flattering fit. Perfect for workouts or casual wear. Made famous by TikTok fitness influencers and viral challenges.",
+      description: "An immersive virtual reality headset that transports you into 3D worlds, perfect for gaming, virtual meetings, and interactive experiences. Popularized by gaming influencers and used at tech expos to showcase the latest VR advancements.",
       review_rating: 4.6,
       category: "Electronics",
-      featured_on: ["TikTok", "Instagram"]
-  }
+      featured_on: ["E3 Gaming Expo", "CES"]
+    }
 ]
