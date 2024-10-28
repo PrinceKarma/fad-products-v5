@@ -62,3 +62,13 @@
 .removeFromWishList:hover {
     background-color: hsl(354, 70%, 46%);
 }
+
+#productName {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+#price {
+    font-weight: bold;
+}

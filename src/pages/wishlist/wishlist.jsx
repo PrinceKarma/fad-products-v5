@@ -23,7 +23,7 @@ export const WishList = () => {
                         return <WishListItem data={product} />;
                     })}
                 </div>) : (
-                <h1>Your WishList is Empty</h1>
+                <h2>Your WishList is Empty</h2>
             )}
         </div>
     );
