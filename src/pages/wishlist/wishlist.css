@@ -20,7 +20,7 @@
 .wishlistProduct {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%;
 }
 
 .wishlistProduct img {
@@ -71,4 +71,5 @@
 
 #price {
     font-weight: bold;
+    margin-left: 1%;
 }
