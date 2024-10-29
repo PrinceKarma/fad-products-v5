@@ -19,7 +19,8 @@
 
 .wishlistProduct {
     display: flex;
-    align-items: center;
+    align-items: left;
+    text-align: left;
     width: 90%;
 }
 
@@ -63,13 +64,12 @@
     background-color: hsl(354, 70%, 46%);
 }
 
-#productName {
+#wishListProductName {
     font-weight: bold;
     text-decoration: none;
-    color: black;
 }
 
 #price {
     font-weight: bold;
-    margin-left: 1%;
+    font-size: 0.7em;
 }

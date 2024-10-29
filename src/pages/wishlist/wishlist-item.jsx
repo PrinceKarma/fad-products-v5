@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
 import { TrashSimple, CheckSquare } from "phosphor-react"
 
@@ -22,12 +22,14 @@ export const WishListItem = (props) => {
             <div className="wishlistProduct">
 
                 <Link to={`/product/${id}`}>
-                    <img src={productImage} />
+                    <img src={productImage} alt={productName} />
                 </Link>
-                <Link to={`/product/${id}`} id="productName">
-                    {productName}
-                </Link>
-                <div id="price"> ${price}</div>
+                <div id="wishlistProductInfo">
+                    <Link to={`/product/${id}`} id="wishListProductName">
+                        {productName}
+                    </Link>
+                    <div id="price"> ${price}</div>
+                </div>
             </div >
             <div className="wishlistActions">
 
