@@ -4,8 +4,9 @@ import { TrashSimple, CheckSquare } from "phosphor-react"
 
 import { useNavigate, Link } from "react-router-dom";
 import "./wishlist.css";
+import { RatingStars } from "../../components/ratings-stars";
 export const WishListItem = (props) => {
-    const { id, productName, price, productImage } = props.data;
+    const { id, productName, price, productImage, review_rating } = props.data;
     const { cartProducts, addToCart, removeFromCart, updateCartProductCount, removeFromWishList } =
         useContext(ShopContext);
     const navigate = useNavigate();
@@ -17,8 +18,6 @@ export const WishListItem = (props) => {
     return (
         <div className="wishListItem">
 
-
-
             <div className="wishlistProduct">
 
                 <Link to={`/product/${id}`}>
@@ -29,6 +28,7 @@ export const WishListItem = (props) => {
                         {productName}
                     </Link>
                     <div id="price"> ${price}</div>
+                    <RatingStars rating={review_rating} />
                 </div>
             </div >
             <div className="wishlistActions">

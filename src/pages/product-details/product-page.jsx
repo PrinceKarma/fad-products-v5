@@ -4,13 +4,14 @@ import { ShopContext } from '../../context/shop-context';
 import { PRODUCTS } from '../../products';
 import { Star, ShoppingCart, Heart } from 'phosphor-react';
 import './product-page.css';
+import { RatingStars } from '../../components/ratings-stars';
 
 export const ProductPage = () => {
   const { id } = useParams();
   const { addToCart, cartProducts, addToWishList, removeFromWishList, isProductInWishList } = useContext(ShopContext);
 
   const product = PRODUCTS.find((p) => p.id === parseInt(id));
-  
+
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -28,21 +29,14 @@ export const ProductPage = () => {
           <p className="product-category">{product.category}</p>
           <h1 className="product-title">{product.productName}</h1>
           <div className="product-rating">
-            {[...Array(5)].map((_, i) => (
-              <Star 
-                key={i} 
-                className="rating-star" 
-                weight = "fill"
-                color={i < Math.floor(product.review_rating) ? "#F6E05E" : "#E2E8F0"} 
-              />
-            ))}
+            <RatingStars className="rating-star" rating={product.review_rating} />
             <span className="rating-text">{product.review_rating} out of 5 ({Math.floor(product.review_rating * 100)} reviews)</span>
           </div>
           <p className="product-description">{product.description}</p>
           <p className="product-featured">Featured on: {product.featured_on.join(", ")}</p>
           <p className="product-price">${product.price.toFixed(2)}</p>
           <div className="product-actions">
-            <button 
+            <button
               className="btn btn-primary"
               onClick={() => addToCart(product.id)}
             >
@@ -52,18 +46,18 @@ export const ProductPage = () => {
             <button
               className="btn btn-secondary"
               onClick={() =>
-                  isInWishlist
-                      ? removeFromWishList(product.id)
-                      : addToWishList(product.id)
+                isInWishlist
+                  ? removeFromWishList(product.id)
+                  : addToWishList(product.id)
               }
             >
               <Heart
-                  className="btn-icon"
-                  weight={isInWishlist ? "fill" : null} // Change weight only
-                  color={isInWishlist ? "red" : "#4299E1"} // Optional color change
+                className="btn-icon"
+                weight={isInWishlist ? "fill" : null} // Change weight only
+                color={isInWishlist ? "red" : "#4299E1"} // Optional color change
               />
               {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
-            </button>            
+            </button>
           </div>
         </div>
       </div>
