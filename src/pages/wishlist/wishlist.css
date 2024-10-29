@@ -19,8 +19,9 @@
 
 .wishlistProduct {
     display: flex;
-    align-items: center;
-    width: 100%;
+    align-items: left;
+    text-align: left;
+    width: 90%;
 }
 
 .wishlistProduct img {
@@ -61,4 +62,14 @@
 
 .removeFromWishList:hover {
     background-color: hsl(354, 70%, 46%);
+}
+
+#wishListProductName {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#price {
+    font-weight: bold;
+    font-size: 0.7em;
 }

@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ShopContext } from "../../context/shop-context";
+import { Link } from "react-router-dom";
+import "./cart-product.css";
 
 export const CartProduct = (props) => {
   const { id, productName, price, productImage } = props.data;
@@ -22,7 +24,7 @@ export const CartProduct = (props) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
-    
+
     if (isValidInput(value)) {
       updateCartProductCount(parseInt(value), id);
       setErrorMessage("");
@@ -49,9 +51,9 @@ export const CartProduct = (props) => {
 
   return (
     <div className="cartProduct">
-      <img src={productImage} alt={productName} />
+      <Link to={`/product/${id}`}><img src={productImage} alt={productName} /></Link>
       <div className="description">
-        <p><b>{productName}</b></p>
+        <p><Link to={`/product/${id}`}><b>{productName}</b></Link></p>
         <p>Price: ${price}</p>
       </div>
       <div className="countHandlerWrapper">

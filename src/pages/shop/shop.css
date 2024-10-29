@@ -106,7 +106,8 @@ body {
   gap: 1rem;
 }
 
-.addToCartBttn, .addToWishListBttn {
+.addToCartBttn,
+.addToWishListBttn {
   padding: 0.75rem 1.5rem;
   font-size: 1.1rem;
   font-weight: bold;
