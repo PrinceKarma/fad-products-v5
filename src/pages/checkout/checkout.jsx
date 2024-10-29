@@ -7,6 +7,12 @@ export const Checkout = () => {
   const { getTotalCartAmount, checkout } = useContext(ShopContext);
   const navigate = useNavigate();
 
+  const SHIPPING_COSTS = {
+    standard: { price: 5.99, label: 'Standard (3-5 business days)' },
+    express: { price: 12.99, label: 'Express (1-2 business days)' },
+    overnight: { price: 24.99, label: 'Overnight' }
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     address: '',
@@ -24,6 +30,16 @@ export const Checkout = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const calculateTotal = () => {
+    const subtotal = getTotalCartAmount();
+    const shippingCost = SHIPPING_COSTS[formData.shippingSpeed].price;
+    return (subtotal + shippingCost).toFixed(2);
+  };
+
+  const formatPrice = (price) => {
+    return Number(price).toFixed(2);
   };
 
   const validateForm = () => {
@@ -112,6 +128,7 @@ export const Checkout = () => {
             {errors.phone && <span className="error">{errors.phone}</span>}
           </div>
         </div>
+
         <div className="form-section">
           <h2>Payment Details</h2>
           <div className="form-group">
@@ -151,6 +168,7 @@ export const Checkout = () => {
             {errors.cvv && <span className="error">{errors.cvv}</span>}
           </div>
         </div>
+
         <div className="form-section">
           <h2>Shipping</h2>
           <div className="form-group">
@@ -161,14 +179,26 @@ export const Checkout = () => {
               value={formData.shippingSpeed}
               onChange={handleInputChange}
             >
-              <option value="standard">Standard (3-5 business days)</option>
-              <option value="express">Express (1-2 business days)</option>
-              <option value="overnight">Overnight</option>
+              {Object.entries(SHIPPING_COSTS).map(([value, { label, price }]) => (
+                <option key={value} value={value}>
+                  {label} - ${formatPrice(price)}
+                </option>
+              ))}
             </select>
           </div>
         </div>
         <div className="order-total">
-          <h2>Order Total: ${getTotalCartAmount()}</h2>
+          <div className="order-summary">
+            <div className="subtotal">
+              <span>Subtotal:</span>
+              <span>${formatPrice(getTotalCartAmount())}</span>
+            </div>
+            <div className="shipping-cost">
+              <span>Shipping:</span>
+              <span>${formatPrice(SHIPPING_COSTS[formData.shippingSpeed].price)}</span>
+            </div>
+            <h2>Order Total: ${calculateTotal()}</h2>
+          </div>
         </div>
         <div className="button-container">
           <button type="submit" className="complete-purchase">Complete Purchase</button>
