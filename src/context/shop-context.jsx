@@ -23,7 +23,7 @@ export const ShopContextProvider = (props) => {
         totalAmount += cartProducts[Product] * ProductInfo.price;
       }
     }
-    return totalAmount.toFixed(2);
+    return Number(totalAmount.toFixed(2)); // Round to 2 decimal places
   };
 
   const addToWishList = (ProductId) => {
