@@ -4,11 +4,28 @@ import { ShopContext } from "../../context/shop-context";
 import { Heart, ShoppingCart } from 'phosphor-react';
 
 export const Product = (props) => {
-  const { id, productName, price, productImage } = props.data;
+  const { id, productName, price, productImage, review_rating } = props.data;
   const { addToCart, cartProducts, addToWishList, removeFromWishList, isProductInWishList } = useContext(ShopContext);
 
   const cartProductCount = cartProducts[id];
   const isInWishlist = isProductInWishList(id);
+
+  const renderStars = (review_rating) => {
+    const fullStars = Math.floor(review_rating);
+    const hasHalfStar = review_rating % 1 >= 0.5;
+
+    return (
+      <div className="review_rating">
+        {[...Array(fullStars)].map((_, index) => (
+          <span key={index} style={{ color: 'gold' }}>★</span> // Full star
+        ))}
+        {hasHalfStar && <span style={{ color: 'gold' }}>★</span>} {/* Half star */}
+        {[...Array(5 - fullStars - (hasHalfStar ? 1 : 0))].map((_, index) => (
+          <span key={index + fullStars + (hasHalfStar ? 1 : 0)} style={{ color: '#ccc' }}>★</span> // Empty star
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="product">
@@ -19,6 +36,7 @@ export const Product = (props) => {
           <p>${price.toFixed(2)}</p>
         </div>
       </Link>
+      {renderStars(review_rating)}
       <div className="productActions">
         <button className="addToCartBttn" onClick={() => addToCart(id)}>
           <ShoppingCart size={20} style={{marginRight: '0.5rem'}} />
