@@ -5,16 +5,18 @@ import { ShopContext } from "../context/shop-context";
 
 
 import "./navbar.css";
+import { PRODUCTS } from "../products";
 
 
 export const Navbar = () => {
-    const { cartProducts } = useContext(ShopContext);
+    const { cartProducts, updateCategoryFilter } = useContext(ShopContext);
+
     const cartTotalQuantity = Object.values(cartProducts).reduce((sum, count) => sum + count, 0);
-    return (
+    return (<div>
         <div className="navbar">
             <div className="links">
                 <div className="site-name">
-                    <Link to="/">Fad Products</Link> 
+                    <Link to="/">Fad Products</Link>
                 </div>
 
                 <div className="right-elements"> {/* Container for right-aligned elements */}
@@ -39,6 +41,20 @@ export const Navbar = () => {
                     </Link>
                 </div>
             </div>
+
         </div>
+        <div className="navbar-categories">
+            <Link to="/"><button onClick={() => updateCategoryFilter("")} >
+                All
+            </button></Link>
+
+            {Array.from(new Set(PRODUCTS.map((product) => product.category))).map((category, index) => (
+                <Link to="/"><button key={index} onClick={() => updateCategoryFilter(category)} >
+                    {category}
+                </button></Link>
+            ))}
+        </div>
+    </div>
+
     );
 }

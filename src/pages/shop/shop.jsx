@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { PRODUCTS } from "../../products";
 import { Product } from "./product-card";
 import "./shop.css";
+import { ShopContext } from "../../context/shop-context";
 
 export const Shop = () => {
   // State to handle search term
@@ -11,16 +12,21 @@ export const Shop = () => {
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
+  const { categoryFilter } =
+    useContext(ShopContext);
 
   const filteredProducts = PRODUCTS.filter((product) =>
-    product.productName.toLowerCase().includes(searchTerm.toLowerCase())
+    product.productName.toLowerCase().includes(searchTerm.toLowerCase()) && (categoryFilter === "" || product.category === categoryFilter)
   );
+
+
 
   return (
     <div className="shop">
       <div className="shopTitle">
         <h1>Shop</h1>
       </div>
+
 
       {/* Search Bar */}
       <div className="searchBar">
@@ -31,13 +37,19 @@ export const Shop = () => {
           onChange={handleSearch}
         />
         {searchTerm && (
-          <button 
-            className="clearSearchBtn" 
+          <button
+            className="clearSearchBtn"
             onClick={() => setSearchTerm('')}
           >
             ✕
           </button>
         )}
+      </div>
+      <div
+        style={{ visibility: categoryFilter ? "visible" : "hidden" }}
+        className="currentCategory"
+      >
+        Viewing Products from the {categoryFilter} section
       </div>
 
       {/* Products List */}

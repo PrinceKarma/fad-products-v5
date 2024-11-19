@@ -17,6 +17,14 @@ body {
   margin-bottom: 3rem;
 }
 
+.currentCategory {
+  padding-left: 1%;
+  text-align: left;
+  font-size: 0.7em;
+  margin-bottom: 50px;
+  color: #7a7a7a;
+}
+
 .shopTitle h1 {
   font-size: 2.5rem;
   color: #333333;
@@ -40,7 +48,8 @@ body {
   border: none;
   color: red;
   cursor: pointer;
-  font-size: 1.5rem; /* Increased size */
+  font-size: 1.5rem;
+  /* Increased size */
   width: 30px;
   height: 30px;
   display: flex;
@@ -49,12 +58,15 @@ body {
 }
 
 .clearSearchBtn:hover {
-  background-color: #ffeeee; /* Soft red background on hover */
+  background-color: #ffeeee;
+  /* Soft red background on hover */
 }
 
 .searchBar input:focus {
-  border-bottom-color: #4299E1; /* Distinctive focus color */
-  box-shadow: 0 2px 0 #4299E1; /* Subtle underline effect */
+  border-bottom-color: #4299E1;
+  /* Distinctive focus color */
+  box-shadow: 0 2px 0 #4299E1;
+  /* Subtle underline effect */
   outline: none;
   border-bottom-color: #333333;
 }

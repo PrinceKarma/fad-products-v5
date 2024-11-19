@@ -16,6 +16,7 @@ const getDefaultCart = () => {
 export const ShopContextProvider = (props) => {
   const [cartProducts, setCartProducts] = useState(getDefaultCart());
   const [wishList, setWishList] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("");
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -77,6 +78,9 @@ export const ShopContextProvider = (props) => {
   const checkout = () => {
     setCartProducts(getDefaultCart());
   };
+  const updateCategoryFilter = (category) => {
+    setCategoryFilter(category);
+  };
 
   const contextValue = {
     addToWishList,
@@ -89,6 +93,8 @@ export const ShopContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     checkout,
+    categoryFilter,
+    updateCategoryFilter
   };
 
   return (
