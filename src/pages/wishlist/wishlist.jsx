@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
 import { PRODUCTS } from "../../products";
 import { WishListItem } from "./wishlist-item";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const WishList = () => {
@@ -21,6 +23,7 @@ export const WishList = () => {
                 </div>) : (
                 <h2>Your WishList is Empty</h2>
             )}
+            <ToastContainer toastStyle={{ width: "500px" }} position="bottom-center" hideProgressBar={true} />
         </div>
     );
 };

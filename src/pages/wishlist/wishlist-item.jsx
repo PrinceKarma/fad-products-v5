@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./wishlist.css";
 import { RatingStars } from "../../components/ratings-stars";
 
+
 export const WishListItem = (props) => {
     const { id, productName, price, productImage, review_rating } = props.data;
     const { cartProducts, addToCart, removeFromWishList } =
@@ -36,9 +37,8 @@ export const WishListItem = (props) => {
             </div>
             <div className="wishlistActions">
                 <button
-                    className={`wishlistButton addToCart ${
-                        inCart ? "inCart" : ""
-                    }`}
+                    className={`wishlistButton addToCart ${inCart ? "inCart" : ""
+                        }`}
                     onClick={() => {
                         !inCart ? handleAddToCart(id) : navigate("/cart");
                     }}

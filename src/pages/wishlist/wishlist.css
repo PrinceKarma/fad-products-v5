@@ -14,8 +14,10 @@
 }
 
 .wishlistImage {
-    width: 150px; /* Medium size */
-    height: auto; /* Maintain aspect ratio */
+    width: 150px;
+    /* Medium size */
+    height: auto;
+    /* Maintain aspect ratio */
     border-radius: 5px;
 }
 
@@ -44,7 +46,8 @@
 /* Actions Styles */
 .wishlistActions {
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
+    flex-direction: column;
+    /* Stack buttons vertically */
     gap: 10px;
     align-items: flex-start;
 }
@@ -57,7 +60,8 @@
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 100%; /* Buttons take the full width of the action container */
+    width: 100%;
+    /* Buttons take the full width of the action container */
 }
 
 /* Add to Cart Button */
@@ -87,4 +91,11 @@
 
 .wishlistButton.inCart:hover {
     background-color: #218838;
+}
+
+.toast-action button {
+    color: inherit;
+    border: 0;
+    padding: 5px;
+    box-shadow: 5px 5px 5px 1px #E1EAE8;
 }

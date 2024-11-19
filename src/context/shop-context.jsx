@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import { PRODUCTS } from "../products";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ShopContext = createContext(null);
 
@@ -36,10 +38,16 @@ export const ShopContextProvider = (props) => {
   };
 
   const removeFromWishList = (ProductId) => {
+    console.log(ProductId);
+    let removedProduct = PRODUCTS.find((product) => product.id === ProductId);
     setWishList((prevWishList) =>
       prevWishList.filter(id => id !== ProductId) // Remove the product by filtering it out
     );
+    toast(<div><span className="toast-message">Removed {removedProduct.productName} from wishlist</span> <span className="toast-action"><button onClick={() => { undoRemoveFromWishList(removedProduct.id); toast.dismiss(); }}>Undo</button></span></div>);
   };
+
+  const undoRemoveFromWishList = (removedProductId) => { addToWishList(removedProductId) };
+  const undoRemoveFromCart = (removedProductId) => { addToCart(removedProductId) };
 
   const isProductInWishList = (ProductId) => wishList.includes(ProductId);
 
@@ -48,10 +56,15 @@ export const ShopContextProvider = (props) => {
   };
 
   const removeFromCart = (ProductId) => {
+    let currentQty = cartProducts[ProductId];
     setCartProducts((prev) => ({
       ...prev,
       [ProductId]: Math.max(0, prev[ProductId] - 1)
     }));
+    if (currentQty === 1) {
+      let removedProduct = PRODUCTS.find((product) => product.id === ProductId);
+      toast(<div><span className="toast-message">Removed {removedProduct.productName} from cart</span> <span className="toast-action"><button onClick={() => { undoRemoveFromCart(removedProduct.id); toast.dismiss(); }}>Undo</button></span></div>);
+    }
   };
 
   const updateCartProductCount = (newAmount, ProductId) => {

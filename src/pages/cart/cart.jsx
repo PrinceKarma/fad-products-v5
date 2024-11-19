@@ -3,6 +3,9 @@ import { ShopContext } from "../../context/shop-context";
 import { PRODUCTS } from "../../products";
 import { CartProduct } from "./cart-product";
 import { useNavigate } from "react-router-dom";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./cart.css";
 
 export const Cart = () => {
@@ -35,6 +38,7 @@ export const Cart = () => {
           <h2>Your Shopping Cart is Empty</h2>
         )}
       </div>
+      <ToastContainer toastStyle={{ width: "500px" }} position="bottom-center" hideProgressBar={true} />
     </div>
   );
 };
