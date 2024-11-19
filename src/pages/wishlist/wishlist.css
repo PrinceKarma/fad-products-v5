@@ -2,15 +2,18 @@
 .wishListItem {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px;
+    align-items: center;
+    padding: 1.5rem;
     border-bottom: 1px solid #e0e0e0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Product Image Styles */
 .wishlistProduct {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    flex: 1;
 }
 
 .wishlistImage {
@@ -18,29 +21,35 @@
     /* Medium size */
     height: auto;
     /* Maintain aspect ratio */
+    width: 200px; /* Slightly larger */
+    height: auto;
     border-radius: 5px;
+    margin-right: 2rem;
 }
 
 #wishlistProductInfo {
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Product Info Styles */
 #wishListProductName {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
-    color: #333;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
 }
 
 #wishListProductName:hover {
-    color: #007bff;
+    color: #4299E1;
 }
 
 #wishlistProductInfo #price {
-    margin-top: 5px;
-    color: #666;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    color: #2D3748;
+    margin-bottom: 1rem;
 }
 
 /* Actions Styles */
@@ -50,18 +59,23 @@
     /* Stack buttons vertically */
     gap: 10px;
     align-items: flex-start;
+    gap: 1rem;
 }
 
 /* Button Base Styles */
 .wishlistButton {
-    padding: 8px 16px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
-    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%;
     /* Buttons take the full width of the action container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Add to Cart Button */
@@ -71,22 +85,25 @@
 }
 
 .wishlistButton.addToCart:hover {
-    background-color: #0056b3;
+    background-color: #3182CE;
 }
 
 /* Remove Button */
 .wishlistButton.removeFromWishList {
-    background-color: #dc3545;
-    color: white;
+    background-color: #FFFFFF;
+    color: #4299E1;
+    border: 1px solid #4299E1;
 }
 
 .wishlistButton.removeFromWishList:hover {
-    background-color: #a71d2a;
+    background-color: #EBF8FF;
 }
 
 /* In-Cart Button */
+/* In-Cart Button */
 .wishlistButton.inCart {
     background-color: #28a745;
+    color: white;
 }
 
 .wishlistButton.inCart:hover {

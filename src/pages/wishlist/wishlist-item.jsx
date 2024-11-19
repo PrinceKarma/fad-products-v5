@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
-import { TrashSimple } from "phosphor-react";
+import { ShoppingCart, Heart } from "phosphor-react";
 import { useNavigate, Link } from "react-router-dom";
 import "./wishlist.css";
 import { RatingStars } from "../../components/ratings-stars";
@@ -8,10 +8,11 @@ import { RatingStars } from "../../components/ratings-stars";
 
 export const WishListItem = (props) => {
     const { id, productName, price, productImage, review_rating } = props.data;
-    const { cartProducts, addToCart, removeFromWishList } =
+    const { cartProducts, addToCart, removeFromWishList, isProductInWishList } =
         useContext(ShopContext);
     const navigate = useNavigate();
     const inCart = cartProducts[id] && cartProducts[id] > 0;
+    const inWishlist = isProductInWishList(id);
 
     const handleAddToCart = (id) => {
         addToCart(id);
@@ -31,7 +32,7 @@ export const WishListItem = (props) => {
                     <Link to={`/product/${id}`} id="wishListProductName">
                         {productName}
                     </Link>
-                    <div id="price">${price}</div>
+                    <div id="price">${price.toFixed(2)}</div>
                     <RatingStars rating={review_rating} />
                 </div>
             </div>
@@ -43,14 +44,19 @@ export const WishListItem = (props) => {
                         !inCart ? handleAddToCart(id) : navigate("/cart");
                     }}
                 >
+                    <ShoppingCart className="btn-icon" />
                     {inCart ? "Go To Cart" : "Add To Cart"}
                 </button>
                 <button
                     className="wishlistButton removeFromWishList"
                     onClick={() => removeFromWishList(id)}
                 >
-                    <TrashSimple />
-                    Remove
+                    <Heart 
+                        className="btn-icon" 
+                        weight={inWishlist ? "fill" : "bold"} 
+                        color={inWishlist ? "red" : "#4299E1"} 
+                    />
+                    Remove from Wishlist
                 </button>
             </div>
         </div>
