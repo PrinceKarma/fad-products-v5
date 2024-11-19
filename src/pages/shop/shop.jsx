@@ -19,7 +19,7 @@ export const Shop = () => {
   return (
     <div className="shop">
       <div className="shopTitle">
-        <h1>Fad Products</h1>
+        <h1>Shop</h1>
       </div>
 
       {/* Search Bar */}
