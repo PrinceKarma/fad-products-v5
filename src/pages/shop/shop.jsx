@@ -30,6 +30,14 @@ export const Shop = () => {
           value={searchTerm}
           onChange={handleSearch}
         />
+        {searchTerm && (
+          <button 
+            className="clearSearchBtn" 
+            onClick={() => setSearchTerm('')}
+          >
+            ✕
+          </button>
+        )}
       </div>
 
       {/* Products List */}
@@ -40,7 +48,7 @@ export const Shop = () => {
           ))
         ) : (
           <div className="noResults">
-            <p>No products found. Please try a different search term.</p>
+            <p>No products found. Please try a different search term or clear the search to exit.</p>
           </div>
         )}
       </div>
