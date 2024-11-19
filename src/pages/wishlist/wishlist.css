@@ -1,75 +1,90 @@
-.wishlistActions {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    margin-left: 0;
-    /* gap: 10px; */
-    /* Added spacing between buttons */
-}
-
+/* Container Styles */
 .wishListItem {
     display: flex;
-    height: 10%;
-    align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid hsl(0, 0%, 87%);
-    margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
+    align-items: flex-start;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
+/* Product Image Styles */
 .wishlistProduct {
     display: flex;
-    align-items: left;
-    text-align: left;
-    width: 90%;
+    align-items: flex-start;
 }
 
-.wishlistProduct img {
-    width: 100px;
-    height: auto;
-    margin-right: 15px;
+.wishlistImage {
+    width: 150px; /* Medium size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px;
 }
 
-.alert-container {
-    visibility: hidden;
-    color: hsl(134, 74%, 47%);
+#wishlistProductInfo {
+    margin-left: 10px;
 }
 
-.alert-icon {
-    margin-right: 5px;
-}
-
-.addToCart,
-.removeFromWishList {
-
-    background-color: transparent;
-    border: 2px solid rgb(19, 19, 19);
-    padding: 4px 8px;
-    margin-top: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-    width: 100%
-}
-
-.addToCart:hover {
-    background-color: rgba(19, 19, 19, 0.1);
-}
-
-.removeFromWishList {
-    background-color: hsl(354, 70%, 54%);
-}
-
-.removeFromWishList:hover {
-    background-color: hsl(354, 70%, 46%);
-}
-
+/* Product Info Styles */
 #wishListProductName {
+    font-size: 1rem;
     font-weight: bold;
     text-decoration: none;
+    color: #333;
 }
 
-#price {
-    font-weight: bold;
-    font-size: 0.7em;
+#wishListProductName:hover {
+    color: #007bff;
+}
+
+#wishlistProductInfo #price {
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Actions Styles */
+.wishlistActions {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+    align-items: flex-start;
+}
+
+/* Button Base Styles */
+.wishlistButton {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Buttons take the full width of the action container */
+}
+
+/* Add to Cart Button */
+.wishlistButton.addToCart {
+    background-color: #4299E1;
+    color: white;
+}
+
+.wishlistButton.addToCart:hover {
+    background-color: #0056b3;
+}
+
+/* Remove Button */
+.wishlistButton.removeFromWishList {
+    background-color: #dc3545;
+    color: white;
+}
+
+.wishlistButton.removeFromWishList:hover {
+    background-color: #a71d2a;
+}
+
+/* In-Cart Button */
+.wishlistButton.inCart {
+    background-color: #28a745;
+}
+
+.wishlistButton.inCart:hover {
+    background-color: #218838;
 }

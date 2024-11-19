@@ -1,8 +1,65 @@
 .cart {
   display: flex;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.cartItems {
+  flex: 3;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 20px;
+}
+
+.cartItems h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cartProduct {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.cartSummary {
+  flex: 1;
+  position: sticky;
+  top: 20px; /* Adjusts how far from the top the summary stays fixed */
+  padding: 20px;
+  background: #f9f9f9;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  max-width: 300px; /* Small block width */
+}
+
+.cartSummary h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.cartSummary p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.cartSummary button {
+  width: 100%;
+  height: 40px;
+  background-color:#4299E1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.cartSummary button:hover {
+  background-color:#0056b3;
 }
 
 .cartProduct {
@@ -17,42 +74,62 @@
 }
 
 .cartProduct img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
-  margin-bottom: 15px;
+  margin-right: 20px;
 }
 
 .cartProduct .description {
-  width: 100%;
-  text-align: center;
-  font-size: 25px;
-  margin-bottom: 15px;
+  flex: 1;
+  text-align: left;
+  font-size: 18px;
 }
 
 .countHandlerWrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
+  align-items: flex-end;
 }
 
 .countHandler {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .countHandler input {
   width: 50px;
   height: 30px;
   text-align: center;
-  font-weight: bolder;
-  margin: 0 10px;
+  font-weight: bold;
   border: 1px solid #ccc;
   border-radius: 4px;
-  transition: all 0.3s ease;
+}
+
+.error-message-container {
+  margin-top: 5px;
+}
+
+.totalSummary {
+  width: 300px;
+  position: sticky;
+  top: 20px;
+  padding: 20px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.totalSummary h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.totalSummary p {
+  font-size: 18px;
+  margin: 10px 0;
 }
 
 .countHandler input.invalid {
@@ -91,12 +168,12 @@
 }
 
 .checkout button {
-  width: 150px;
+  width: 100%;
   height: 50px;
   background-color: rgb(19, 19, 19);
   color: white;
   border: none;
   border-radius: 8px;
-  margin: 10px;
+  margin-top: 20px;
   cursor: pointer;
 }
