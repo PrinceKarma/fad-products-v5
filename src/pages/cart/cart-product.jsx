@@ -1,10 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ShopContext } from "../../context/shop-context";
 import { Link } from "react-router-dom";
-import "./cart-product.css";
 
 export const CartProduct = (props) => {
-  const { id, productName, price, productImage } = props.data;
+  const { id, productName, price, productImage, category } = props.data;
   const { cartProducts, addToCart, removeFromCart, updateCartProductCount } =
     useContext(ShopContext);
   const [inputValue, setInputValue] = useState(cartProducts[id] || 0);
@@ -51,35 +50,38 @@ export const CartProduct = (props) => {
 
   return (
     <div className="cartProduct">
+      <div className="product-details">
       <Link to={`/product/${id}`}><img src={productImage} alt={productName} /></Link>
-      <div className="description">
-        <p><Link to={`/product/${id}`}><b>{productName}</b></Link></p>
-        <p>Price: ${price}</p>
-      </div>
-      <div className="countHandlerWrapper">
-        <div className="countHandler">
-          <button onClick={() => removeFromCart(id)} disabled={cartProducts[id] <= 0}> - </button>
-          <input
-            value={inputValue}
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            className={isInvalid ? 'invalid' : ''}
-            aria-invalid={isInvalid}
-            aria-describedby={`error-message-${id}`}
-          />
-          <button onClick={() => addToCart(id)}> + </button>
-        </div>
-        <div className="error-message-container" aria-live="polite">
-          {errorMessage && (
-            <p id={`error-message-${id}`} className="error-message">
-              {errorMessage}
-            </p>
-          )}
+        <div className="description">
+          <b>{productName}</b>
+          <p>{category}</p>
         </div>
       </div>
+      
+      <div className="countHandler">
+        <button onClick={() => removeFromCart(id)} disabled={cartProducts[id] <= 0}> - </button>
+        <input
+          value={inputValue}
+          onChange={handleInputChange}
+          onBlur={handleBlur}
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          className={isInvalid ? 'invalid' : ''}
+          aria-invalid={isInvalid}
+          aria-describedby={`error-message-${id}`}
+        />
+        <button onClick={() => addToCart(id)}> + </button>
+      </div>
+      
+      <div className="price">${price}</div>
+      <div className="total">${(price * cartProducts[id]).toFixed(2)}</div>
+      
+      {errorMessage && (
+        <p id={`error-message-${id}`} className="error-message">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 };

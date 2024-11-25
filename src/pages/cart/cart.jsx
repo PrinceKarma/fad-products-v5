@@ -13,10 +13,18 @@ export const Cart = () => {
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
 
+  const itemCount = Object.values(cartProducts).reduce((a, b) => a + b, 0);
+
   return (
     <div className="cart">
       <div className="cartItems">
         <h1>Shopping Cart</h1>
+        <div className="cart-headers">
+          <span>Product Details</span>
+          <span>Quantity</span>
+          <span>Price</span>
+          <span>Total</span>
+        </div>
         {PRODUCTS.map((product) => {
           if (cartProducts[product.id] !== 0) {
             return <CartProduct data={product} key={product.id} />;
@@ -27,13 +35,27 @@ export const Cart = () => {
 
       <div className="cartSummary">
         {totalAmount > 0 ? (
-          <>
-            <h2>Cart Summary</h2>
-            <p>Total Items: {Object.values(cartProducts).reduce((a, b) => a + b, 0)}</p>
-            <p>Total Amount: ${totalAmount.toFixed(2)}</p>
-            <button onClick={() => navigate("/")}>Continue Shopping</button>
-            <button onClick={() => navigate("/checkout")}>Proceed to Checkout</button>
-          </>
+        <>
+        <h2>Order Summary</h2>
+        <div className="summary-row">
+          <strong>Items</strong>
+          <strong>{itemCount}</strong>
+        </div>
+        
+        <div className="summary-row total-cost">
+          <strong> Estimated Cost</strong>
+          <strong>${totalAmount.toFixed(2)}</strong>
+        </div>
+        
+        <div className="summary-buttons">
+          <button className="continue-shopping-btn" onClick={() => navigate("/")}>
+            Continue Shopping
+          </button>
+          <button className="checkout-button" onClick={() => navigate("/checkout")}>
+            Checkout
+          </button>
+        </div>
+        </>
         ) : (
           <h2>Your Shopping Cart is Empty</h2>
         )}
