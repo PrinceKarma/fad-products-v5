@@ -141,16 +141,16 @@ export const Checkout = () => {
 
   const handleNext = () => {
     if (validateStep(currentStep)) {
-      setCurrentStep(currentStep + 1);
+      if (currentStep === 4) {
+        // If on the review step, submit the form
+        handleSubmit();
+      } else {
+        setCurrentStep(currentStep + 1);
+      }
     }
   };
-
-  const handleBack = () => {
-    setCurrentStep(currentStep - 1);
-  };
-
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
     if (validateStep(currentStep)) {
       setIsSubmitted(true);
       checkout();
@@ -158,6 +158,10 @@ export const Checkout = () => {
         navigate('/');
       }, 3000);
     }
+  };
+
+  const handleBack = () => {
+    setCurrentStep(currentStep - 1);
   };
 
   const renderContactStep = () => (
@@ -408,12 +412,12 @@ export const Checkout = () => {
               Back
             </button>
           )}
-          {currentStep <= 4 ? (
+          {currentStep < 4 ? (
             <button type="button" className="next-button" onClick={handleNext}>
               Next
             </button>
           ) : (
-            <button type="submit" className="complete-purchase">
+            <button type="button" className="complete-purchase" onClick={handleNext}>
               Complete Purchase
             </button>
           )}
