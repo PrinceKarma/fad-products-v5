@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fad-products-v5/static/css/main.17c86b3d.css",
-    "main.js": "/fad-products-v5/static/js/main.76347949.js",
+    "main.css": "/fad-products-v5/static/css/main.ed36f743.css",
+    "main.js": "/fad-products-v5/static/js/main.0e474253.js",
     "static/js/453.68c2ec17.chunk.js": "/fad-products-v5/static/js/453.68c2ec17.chunk.js",
     "static/media/fidget_spinner.png": "/fad-products-v5/static/media/fidget_spinner.a6de0b77838fd78c01c0.png",
     "static/media/led_strip_lights.png": "/fad-products-v5/static/media/led_strip_lights.e23f3e37474a384b8ec0.png",
@@ -18,12 +18,12 @@
     "static/media/hoverboard.jpg": "/fad-products-v5/static/media/hoverboard.e795f7e669c3de3821d1.jpg",
     "static/media/retro_flip_phone.png": "/fad-products-v5/static/media/retro_flip_phone.93a4426f97a314ad832d.png",
     "index.html": "/fad-products-v5/index.html",
-    "main.17c86b3d.css.map": "/fad-products-v5/static/css/main.17c86b3d.css.map",
-    "main.76347949.js.map": "/fad-products-v5/static/js/main.76347949.js.map",
+    "main.ed36f743.css.map": "/fad-products-v5/static/css/main.ed36f743.css.map",
+    "main.0e474253.js.map": "/fad-products-v5/static/js/main.0e474253.js.map",
     "453.68c2ec17.chunk.js.map": "/fad-products-v5/static/js/453.68c2ec17.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.17c86b3d.css",
-    "static/js/main.76347949.js"
+    "static/css/main.ed36f743.css",
+    "static/js/main.0e474253.js"
   ]
 }
