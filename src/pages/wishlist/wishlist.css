@@ -21,7 +21,8 @@
     /* Medium size */
     height: auto;
     /* Maintain aspect ratio */
-    width: 200px; /* Slightly larger */
+    width: 200px;
+    /* Slightly larger */
     height: auto;
     border-radius: 5px;
     margin-right: 2rem;
@@ -31,6 +32,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-content: left;
+    align-items: start;
 }
 
 /* Product Info Styles */
@@ -46,10 +49,12 @@
     color: #4299E1;
 }
 
-#wishlistProductInfo #price {
-    font-size: 1.2rem;
+#wishlistProductInfo #wishlist-price {
+    font-size: 1em;
+    font-size: 1.2em;
     color: #2D3748;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 /* Actions Styles */
