@@ -81,6 +81,35 @@ body {
   background-color: transparent;
 }
 
+/*Autofill */
+.suggestionsList {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 10;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestionItem {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestionItem:hover {
+  background-color: #f0f0f0;
+}
+
+.noSuggestion {
+  padding: 8px;
+  color: #999;
+}
+
 /* Products grid */
 .products {
   display: grid;
