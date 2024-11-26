@@ -214,3 +214,8 @@ body {
   margin-top: 3rem;
   grid-column: 1 / -1;
 }
+
+svg.rating-star {
+  height: 1em;
+  width: 1em;
+}

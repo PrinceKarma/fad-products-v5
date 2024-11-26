@@ -5,7 +5,7 @@ export const RatingStars = (props) => {
     const rating = props.rating;
 
     return (
-        <div className="rating-stars">
+        <span className="rating-stars">
             {
                 [...Array(5)].map((_, i) => {
                     if (i < Math.floor(rating)) {
@@ -38,6 +38,6 @@ export const RatingStars = (props) => {
                     }
                 })
             }
-        </div>
+        </span>
     );
 };

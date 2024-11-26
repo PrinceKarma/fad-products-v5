@@ -32,8 +32,8 @@ export const WishListItem = (props) => {
                     <Link to={`/product/${id}`} id="wishListProductName">
                         {productName}
                     </Link>
-                    <div id="price">${price.toFixed(2)}</div>
                     <RatingStars rating={review_rating} />
+                    <div id="wishlist-price">${price.toFixed(2)}</div>
                 </div>
             </div>
             <div className="wishlistActions">
@@ -51,10 +51,10 @@ export const WishListItem = (props) => {
                     className="wishlistButton removeFromWishList"
                     onClick={() => removeFromWishList(id)}
                 >
-                    <Heart 
-                        className="btn-icon" 
-                        weight={inWishlist ? "fill" : "bold"} 
-                        color={inWishlist ? "red" : "#4299E1"} 
+                    <Heart
+                        className="btn-icon"
+                        weight={inWishlist ? "fill" : "bold"}
+                        color={inWishlist ? "red" : "#4299E1"}
                     />
                     Remove from Wishlist
                 </button>
