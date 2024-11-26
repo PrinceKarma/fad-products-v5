@@ -10,15 +10,15 @@ const StepIndicator = ({ currentStep }) => {
   return (
     <div className="step-indicator-container">
       <div className="progress-bar-container">
-        <div 
-          className="progress-bar-fill" 
+        <div
+          className="progress-bar-fill"
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
       <div className="steps-container">
         {steps.map((step, index) => (
-          <div 
-            key={step} 
+          <div
+            key={step}
             className={`step ${index + 1 <= currentStep ? 'active' : ''}`}
           >
             <div className="step-circle">
@@ -101,7 +101,7 @@ export const Checkout = () => {
     const { name, value } = e.target;
     const formattedValue = formatValue(name, value);
     setFormData({ ...formData, [name]: formattedValue });
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
@@ -110,7 +110,7 @@ export const Checkout = () => {
 
   const validateStep = (step) => {
     const newErrors = {};
-    
+
     switch (step) {
       case 1: // Contact
         if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
@@ -127,7 +127,7 @@ export const Checkout = () => {
         if (!formData.zip.trim().match(/^\d{5}$/)) newErrors.zip = 'Please enter a valid 5-digit Zip Code';
         if (!formData.country.trim()) newErrors.country = 'Country is required';
         break;
-      
+
       case 3: // Payment Information
         if (!formData.cardNumber.replace(/\s/g, '').match(/^\d{16}$/)) newErrors.cardNumber = 'Please enter a valid 16-digit card number';
         if (!formData.expirationDate.match(/^\d{2}\/\d{2}$/)) newErrors.expirationDate = 'Please enter date in MM/YY format';
@@ -149,7 +149,7 @@ export const Checkout = () => {
       }
     }
   };
-  
+
   const handleSubmit = (e) => {
     if (validateStep(currentStep)) {
       setIsSubmitted(true);
@@ -261,11 +261,11 @@ export const Checkout = () => {
             placeholder="VA"
           />
           {errors.state && <span className="error">{errors.state}</span>}
-          </div>
-          </div>
-          <div className="form-row">
         </div>
-          <div className="form-row">
+      </div>
+      <div className="form-row">
+      </div>
+      <div className="form-row">
         <div className="form-group">
           <label htmlFor="zip">Zip Code:</label>
           <input
@@ -357,34 +357,42 @@ export const Checkout = () => {
     <div className="form-section">
       <h2>Order Review</h2>
       <div className="review-details">
-        <h3>Shipping Information</h3>
-        <p>{formData.firstName} {formData.lastName}</p>
-        <p>{formData.street}</p>
-        <p>{formData.city}, {formData.state} {formData.zip}</p>
-        <p>{formData.country}</p>
-        <p>{formData.email}</p>
-        <p>{formData.phone}</p>
-        <p>Shipping Method: {SHIPPING_COSTS[formData.shippingSpeed].label}</p>
-        
-        <h3>Payment Information</h3>
-        <p>Card ending in: {formData.cardNumber.slice(-4)}</p>
-        <p>Expires: {formData.expirationDate}</p>
-      </div>
-      
-      <div className="order-total">
-        <div className="order-summary">
-          <div className="subtotal">
-            <span>Subtotal:</span>
-            <span>${getTotalCartAmount().toFixed(2)}</span>
+        <div className="review-subheading">
+          <h3>Shipping Information</h3>
+          <ul>
+            <li>{formData.firstName} {formData.lastName}</li>
+            <li>{formData.street}</li>
+            <li>{formData.city}, {formData.state} {formData.zip}</li>
+            <li>{formData.country}</li>
+            <li>{formData.email}</li>
+            <li>{formData.phone}</li>
+            <li>Shipping Method: {SHIPPING_COSTS[formData.shippingSpeed].label}</li>
+          </ul>
+        </div>
+        <div className="review-subheading">
+          <h3>Payment Information</h3>
+          <ul>
+            <li>Card ending in: {formData.cardNumber.slice(-4)}</li>
+            <li>Expires: {formData.expirationDate}</li>
+          </ul>
+        </div>
+
+
+        <div className="order-total">
+          <div className="order-summary">
+            <div className="subtotal">
+              <span>Subtotal:</span>
+              <span>${getTotalCartAmount().toFixed(2)}</span>
+            </div>
+            <div className="shipping-cost">
+              <span>Shipping:</span>
+              <span>${SHIPPING_COSTS[formData.shippingSpeed].price.toFixed(2)}</span>
+            </div>
+            <h2>Order Total: ${(getTotalCartAmount() + SHIPPING_COSTS[formData.shippingSpeed].price).toFixed(2)}</h2>
           </div>
-          <div className="shipping-cost">
-            <span>Shipping:</span>
-            <span>${SHIPPING_COSTS[formData.shippingSpeed].price.toFixed(2)}</span>
-          </div>
-          <h2>Order Total: ${(getTotalCartAmount() + SHIPPING_COSTS[formData.shippingSpeed].price).toFixed(2)}</h2>
         </div>
       </div>
-    </div>
+    </div >
   );
 
   if (isSubmitted) {
@@ -405,7 +413,7 @@ export const Checkout = () => {
         {currentStep === 2 && renderShippingStep()}
         {currentStep === 3 && renderPaymentStep()}
         {currentStep === 4 && renderReviewStep()}
-        
+
         <div className="button-container">
           {currentStep > 1 && (
             <button type="button" className="back-button" onClick={handleBack}>

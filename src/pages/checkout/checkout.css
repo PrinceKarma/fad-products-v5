@@ -5,6 +5,7 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 /* Progress Bar Styles */
@@ -238,4 +239,12 @@
   .complete-purchase {
     width: 100%;
   }
+}
+
+.review-subheading li {
+  list-style: none;
+}
+
+.review-details ul {
+  padding-left: 3%;
 }
