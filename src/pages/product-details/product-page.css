@@ -118,3 +118,31 @@
 .btn-icon {
   margin-right: 0.5rem;
 }
+.cart-counter {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.counter-action {
+  cursor: pointer;
+  background-color: #e2e8f0;
+  border: 1px solid #cbd5e0;
+  padding: 5px 10px;
+  border-radius: 4px;
+  user-select: none;
+  font-weight: bold;
+}
+
+.counter-action:hover {
+  background-color: #cbd5e0;
+}
+
+.counter-count {
+  font-size: 1.2rem;
+  font-weight: bold;
+}

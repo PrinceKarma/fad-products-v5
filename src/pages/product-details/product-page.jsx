@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { ShopContext } from '../../context/shop-context';
 import { PRODUCTS } from '../../products';
-import { Star, ShoppingCart, Heart } from 'phosphor-react';
+import { ShoppingCart, Heart } from 'phosphor-react';
 import './product-page.css';
 import { RatingStars } from '../../components/ratings-stars';
 
 export const ProductPage = () => {
   const { id } = useParams();
-  const { addToCart, cartProducts, addToWishList, removeFromWishList, isProductInWishList } = useContext(ShopContext);
+  const { addToCart, removeFromCart, cartProducts, addToWishList, removeFromWishList, isProductInWishList } = useContext(ShopContext);
 
   const product = PRODUCTS.find((p) => p.id === parseInt(id));
 
@@ -16,7 +16,7 @@ export const ProductPage = () => {
     return <div>Product not found</div>;
   }
 
-  const cartProductCount = cartProducts[product.id];
+  const cartProductCount = cartProducts[product.id] || 0;
   const isInWishlist = isProductInWishList(product.id);
 
   return (
@@ -41,8 +41,25 @@ export const ProductPage = () => {
               onClick={() => addToCart(product.id)}
             >
               <ShoppingCart className="btn-icon" />
-              Add to Cart {cartProductCount > 0 && `(${cartProductCount})`}
+              Add to Cart
             </button>
+            {cartProductCount > 0 && (
+              <div className="cart-counter">
+                <span
+                  className="counter-action"
+                  onClick={() => removeFromCart(product.id)}
+                >
+                  -
+                </span>
+                <span className="counter-count">{cartProductCount}</span>
+                <span
+                  className="counter-action"
+                  onClick={() => addToCart(product.id)}
+                >
+                  +
+                </span>
+              </div>
+            )}
             <button
               className="btn btn-secondary"
               onClick={() =>
