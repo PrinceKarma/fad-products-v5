@@ -6,7 +6,9 @@ import { ShopContext } from "../../context/shop-context";
 
 export const Shop = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
 
   const { categoryFilter } = useContext(ShopContext);
 
@@ -19,17 +21,42 @@ export const Shop = () => {
 
   // Autofill suggestions
   const autofillSuggestions = PRODUCTS.filter((product) =>
-    product.productName.toLowerCase().startsWith(searchTerm.toLowerCase())
+    searchInput && product.productName.toLowerCase().startsWith(searchInput.toLowerCase())
   );
 
   // Handle input change
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+  const handleSearchInput = (event) => {
+    setSearchInput(event.target.value);
+    setSelectedSuggestionIndex(-1);
     setShowSuggestions(true);
   };
+  const handleKeyEvent = (event) => {
 
+    if (event.key === "Enter") {
+      if (selectedSuggestionIndex >= 0) {
+        setSearchTerm(autofillSuggestions[selectedSuggestionIndex].productName);
+        setSearchInput(autofillSuggestions[selectedSuggestionIndex].productName);
+      } else {
+        setSearchTerm(event.target.value);
+      }
+      setShowSuggestions(false);
+    } else if (event.key === "ArrowDown") {
+      if (autofillSuggestions.length > 0) {
+        setSelectedSuggestionIndex((prevIndex) =>
+          (prevIndex + 1) % autofillSuggestions.length
+        );
+      }
+    } else if (event.key === "ArrowUp") {
+      if (autofillSuggestions.length > 0) {
+        setSelectedSuggestionIndex((prevIndex) =>
+          (prevIndex - 1) % autofillSuggestions.length
+        );
+      }
+    }
+  };
   // Handle suggestion click
   const handleSuggestionClick = (suggestion) => {
+    setSearchInput(suggestion);
     setSearchTerm(suggestion);
     setShowSuggestions(false);
   };
@@ -50,8 +77,9 @@ export const Shop = () => {
         <input
           type="text"
           placeholder="Search for products..."
-          value={searchTerm}
-          onChange={handleSearch}
+          value={searchInput}
+          onChange={handleSearchInput}
+          onKeyDown={handleKeyEvent}
           onFocus={() => setShowSuggestions(true)}
           onBlur={handleBlur}
         />
@@ -62,14 +90,15 @@ export const Shop = () => {
         )}
 
         {/* Autofill Suggestions */}
-        {showSuggestions && searchTerm && (
+        {showSuggestions && searchInput && (
           <ul className="suggestionsList">
             {autofillSuggestions.length > 0 ? (
-              autofillSuggestions.map((product) => (
+              autofillSuggestions.map((product, index) => (
                 <li
                   key={product.id}
                   onClick={() => handleSuggestionClick(product.productName)}
-                  className="suggestionItem"
+                  className={`suggestionItem ${selectedSuggestionIndex === index ? "highlighted" : ""
+                    }`}
                 >
                   {product.productName}
                 </li>

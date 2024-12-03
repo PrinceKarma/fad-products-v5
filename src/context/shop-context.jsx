@@ -39,7 +39,6 @@ export const ShopContextProvider = (props) => {
   };
 
   const removeFromWishList = (ProductId) => {
-    console.log(ProductId);
     let removedProduct = PRODUCTS.find((product) => product.id === ProductId);
     setWishList((prevWishList) =>
       prevWishList.filter(id => id !== ProductId) // Remove the product by filtering it out
